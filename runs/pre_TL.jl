@@ -1,7 +1,5 @@
 # analysis of SGL Flt1002
-using Plots
 using HDF5
-gr()
 
 include("../src/get_flight_data.jl")
 include("../src/create_TL_coef.jl")
