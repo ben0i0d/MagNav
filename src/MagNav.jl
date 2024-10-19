@@ -1,10 +1,3 @@
-module MagNav
-
-#using Pkg.Artifacts: @artifact_str
-
-using BenchmarkTools, DSP, FFTW, ForwardDiff, HDF5
-using Interpolations, LinearAlgebra, Plots, StaticArrays, Statistics
-
 #data_dir() = joinpath(@__Dir__, "..", "data")
 
 struct MapS
@@ -140,25 +133,3 @@ struct XYZ
     V_CABT::Vector{Float64}
     V_FAN::Vector{Float64}
 end
-
-include("create_TL_Amat.jl")
-include("create_TL_coef.jl")
-include("delta_lat_lon.jl")
-include("fft_maps.jl")
-include("gen_interp_map.jl")
-include("get_flight_data.jl")
-include("get_map_data.jl")
-include("helpers.jl")
-
-export
-create_TL_Amat,central_fdm,
-create_TL_coef,
-delta_lat,delta_lon,delta_north,delta_east,
-upward_fft,create_K,
-gen_interp_map,
-get_flight_data,
-get_map_data,
-detrend,map_grad,
-mean
-
-end # module
