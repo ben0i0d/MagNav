@@ -1,3 +1,5 @@
+using Statistics,StatsBase
+
 function create_TL_Amat(Bx,By,Bz)
 #   create Tolles-Lawson A matrix
 

@@ -1,22 +1,19 @@
 # analysis of SGL Flt1002
-cd(@__DIR__)
-#cd("D:\\klw\\Research\\Magnetic Navigation\\finalize\\MagNav\\runs")
-using Pkg; Pkg.activate("../"); Pkg.instantiate()
-using MagNav
 using Plots
 using HDF5
 gr()
 
-
+include("../src/get_flight_data.jl")
+include("../src/create_TL_coef.jl")
+include("../src/create_TL_Amat.jl")
 
 # get flight data
-data_dir = joinpath(@__DIR__, "..", "data")
-#data_dir  = MagNav.data_dir()
+data_dir = joinpath("../data")
 #cali_file = string(data_dir,"\\Flt1002-train.h5")
-cali_file = joinpath(data_dir,"Flt1002-train.h5")
+cali_file = joinpath(data_dir,"Flt1002_train.h5")
 cali_data  = get_flight_data(cali_file)
 #data_file = string(data_dir,"\\Flt1003-train.h5")
-data_file = joinpath(data_dir,"Flt1003-train.h5")
+data_file = joinpath(data_dir,"Flt1003_train.h5")
 xyz_data  = get_flight_data(data_file)
 
 # sensor locations (from front seat rail)
