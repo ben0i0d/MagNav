@@ -1,3 +1,5 @@
+include("struct.jl")
+
 function get_flight_data(h5_file::String)
 #   h5_file     location/name of flight HDF5 file
 
@@ -9,7 +11,7 @@ function get_flight_data(h5_file::String)
     N           = h5read(h5_file, "N")
     DT          = h5read(h5_file, "dt")
 
-    LINE        = readcheck(N,h5_data,h5_file, "tie_line")
+    LINE        = readcheck(N,h5_data,h5_file, "line")
     FLT         = readcheck(N,h5_data,h5_file, "flight")
     TIME        = readcheck(N,h5_data,h5_file, "tt")
     UTM_X       = readcheck(N,h5_data,h5_file, "utmX")
@@ -143,7 +145,7 @@ function get_flight_data(h5_file::String)
 end # function get_flight_data
 
 function readcheck(N,data,file,field)
-    if field in names(data)
+    if field in keys(data)
         val = h5read(file,field)
         if isnan(sum(val))
             print("")
